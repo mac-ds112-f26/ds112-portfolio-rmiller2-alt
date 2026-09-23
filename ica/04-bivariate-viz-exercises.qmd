@@ -26,6 +26,8 @@ elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv"
 
 # Check it out
 head(elections)
+
+library(ggplot2)
 ```
 
 We'll use this data to explore voting outcomes within the U.S.'s 2-party system. Here's a list of candidates by year:
@@ -49,7 +51,8 @@ How many, or roughly what percent, of the 3000+ counties did the Republican cand
 -   Then discuss what follow-up questions you might have (and that our data might help us answer).
 
 ```{r}
-
+ggplot(elections, aes(x=winner_20))+
+  geom_bar(fill = "red")
 ```
 
 #### Part b
@@ -61,7 +64,8 @@ Notice that the distribution of Republican support from county to county is slig
 What follow-up questions do you have?
 
 ```{r}
-
+ggplot(elections, aes(x = repub_pct_20)) +
+  geom_histogram()
 ```
 
 
@@ -86,7 +90,8 @@ Try to replicate this using `ggplot()`. Think:
 ![](https://mac-stat.github.io/images/112/scatterplot_demo.png){width="50%"}
 
 ```{r}
-
+ggplot(elections, aes(y=repub_pct_20,x=repub_pct_16))+
+  geom_point()
 ```
 
 
@@ -97,7 +102,8 @@ Run each chunk below to build up a a scatterplot of `repub_pct_20` vs `repub_pct
 ```{r}
 # Set up the plotting frame
 # How does this differ from the frame for our histogram of repub_pct_20 alone?
-ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16))
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16))+
+  geom_point()
 ```
 
 ```{r}
@@ -134,8 +140,11 @@ ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
 Summarize the relationship between the Republican support in 2020 and 2016. Be sure to comment on:
 
 -   the strength of the relationship: weak/moderate/strong
+-strong  relationship 
 -   the direction of the relationship: positive/negative
+-this is a positive direction
 -   outliers, ie, in what state do counties deviate from the national trend? Any ideas why this might be the case?
+-Texas and DC deviate from the trend, more polarized
 
 
 ## Exercise 4: Visualizing Trend
@@ -153,7 +162,8 @@ ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
 Construct a new plot that contains the model smooth but does *not* include the individual point glyphs.
 
 ```{r}
-
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_smooth()
 ```
 
 #### Part b
@@ -173,11 +183,13 @@ To examine how the 2020 results are related to some county demographics, constru
 
 ```{r}
 # Scatterplot of repub_pct_20 vs median_rent
-
+ggplot(elections, aes(y = repub_pct_20, x = median_age)) +
+  geom_point()
 
 
 # Scatterplot of repub_pct_20 vs median_age
-
+ggplot(elections, aes(y = repub_pct_20, x = median_rent)) +
+  geom_point()
 
 ```
 
@@ -282,8 +294,11 @@ ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
 We've now learned 3 (of many) ways to visualize the relationship between a quantitative and categorical variable: side-by-side violins, boxplots, and density plots.
 
 -   Which do you like best?
+-the last one is the best
 -   What is one pro of density plots relative to boxplots?
+-visualization is much better
 -   What is one con of density plots relative to boxplots?
+-the strong relationship vs weak relationship cannot be visualized as well
 
 
 ## Exercise 11: Categorical vs Categorical: Intuition Check
