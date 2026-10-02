@@ -45,7 +45,7 @@ book:
       # footer text
 
   sidebar:
-    title: "Your Name Here"
+    title: "Rubin Miller"
     logo: assets/sidebar-logo.png
     logo-alt: "Random negative space illustration"
     collapse-level: 2
@@ -75,8 +75,8 @@ book:
 
     - part: "In-Class Activities"
       chapters:
-      - ica/ica-sample1.qmd
-      - ica/ica-sample2.qmd
+      - /Users/rubinmiller/Documents/GitHub/ds112-portfolio-rmiller2-alt/ica/ica-sample1.qmd
+      - /Users/rubinmiller/Documents/GitHub/ds112-portfolio-rmiller2-alt/ica/ica-sample2.qmd
 
     - part: "Extras"
       chapters:
