@@ -148,11 +148,10 @@ Run the chunks below. Check out the code, but don't worry about every little det
 -   We'll improve the plot later, so don't spend too much time trying to learn something from this plot.
 
 ```{r}
-library(tidyverse)
 #| fig-width: 8
 #| fig-height: 15
 #| eval: false
-
+library(tidyverse)
 # Remove the "State" column and use it to label the rows
 # Then scale the variables
 plot_data <- education |> 
@@ -220,7 +219,7 @@ heatmap.2(plot_data,
 In the final two plots, the states (rows) are rearranged by similarity with respect to these education metrics. The *final* plot includes a **dendrogram** which further indicates *clusters* of similar states. In short, states that have a shorter path to connection are more similar than others.
 
 Putting this all together, what insight do you gain about the education trends across U.S. states? Which states are similar? In what ways are they similar? Are there any outliers with respect to 1 or more of the education metrics?
-
+The midwest are outliers since the ACT is common to take here only the elite students will also take the SAT which puts its metrics at levels such as New York, California, and Massachusetts despite having lower participation. 
 
 
 ### ✏️ Build Star Plot
