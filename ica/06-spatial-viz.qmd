@@ -69,14 +69,6 @@ fave_places <- read.csv("https://hash-mac.github.io/ds112site-f26/data/our_fave_
 head(fave_places)
 ```
 
-```{r}
-#| echo: false
-
-fave_places <- read.csv("../data/our_fave_places.csv")
-
-# Check it out
-head(fave_places)
-```
 
 
 You can use a "two-finger scroll" to zoom in and out.
