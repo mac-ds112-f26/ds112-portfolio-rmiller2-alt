@@ -26,9 +26,9 @@ To comment/uncomment several lines of code at once, highlight them then click <k
 ```{r}
 # Create a dataset with just Adelie and Chinstrap using %in%
 # Pipe this into `count(species)` to confirm that you only have these 2 species
-# ___ |>
-#   filter(___) |>
-#   count(species)
+penguins |>
+  filter(species %in% c("Adelie", "Chinstrap")) |>
+  count(species)
 ```
 
 ### ✏️ Filter with `!=`
@@ -36,9 +36,9 @@ To comment/uncomment several lines of code at once, highlight them then click <k
 ```{r}
 # Create a dataset with just Adelie and Chinstrap using !=
 # Pipe this into `count(species)` to confirm that you only have these 2 species
-# ___ |>
-#   filter(___) |>
-#   count(species)
+penguins |>
+  filter(species != "Gentoo") |>
+  count(species)
 ```
 
 ### ✏️ Explore Missing Data
@@ -60,7 +60,7 @@ Suppose our research focus is *just* on `body_mass_g`. Two penguins are missing 
 ```{r}
 # NOTE the use of is.na()
 penguins |>
-  summarize(sum(is.na(body_mass_g)))
+  summarize(sum(is.na(body_mass)))
 ```
 
 Let's define a new dataset that removes these penguins:
@@ -68,7 +68,7 @@ Let's define a new dataset that removes these penguins:
 ```{r}
 # NOTE the use of is.na()
 penguins_w_body_mass <- penguins |>
-  filter(!is.na(body_mass_g))
+  filter(!is.na(body_mass))
 
 # Compare the number of penguins in this vs the original data
 nrow(penguins_w_body_mass)
@@ -124,7 +124,8 @@ names(penguins)
 Use a shortcut to keep everything but the year and island variables.
 
 ```{r}
-
+penguins |>
+  select(-island, -year)
 ```
 
 
@@ -133,7 +134,8 @@ Use a shortcut to keep everything but the year and island variables.
 Use a shortcut to keep only species and the penguin characteristics measured in mm.
 
 ```{r}
-
+penguins |>
+  select(species, ends_with("_mm"))
 ```
 
 
@@ -142,7 +144,8 @@ Use a shortcut to keep only species and the penguin characteristics measured in 
 Use a shortcut to keep only species and bill-related measurements.
 
 ```{r}
-
+penguins |>
+  select(species, starts_with("bill_"))
 ```
 
 
@@ -151,7 +154,8 @@ Use a shortcut to keep only species and bill-related measurements.
 Use a shortcut to keep only species and the length-related characteristics.
 
 ```{r}
-
+penguins |>
+  select(species, contains("length"))
 ```
 
 \
